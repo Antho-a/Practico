@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 public class Hash {
 
     private final int m = 101;
@@ -38,7 +41,7 @@ public class Hash {
         }
 
         this.tabla[indice]=tarea;
-
+        factorCarga++;
         return tabla[indice].getesAlta();
     }
 
@@ -118,5 +121,55 @@ public class Hash {
         tabla[indice].setId("");
         tabla[indice].setesAlta();
         return "La tarea fue eliminada con exito";
+    }
+     public String editarTarea(int indice,int op){
+        Scanner letra = new Scanner(System.in);
+        String fechaF,fechaI;
+        switch(op){
+            case 1:
+                System.out.println("Ingrese el nombre nuevo para la tarea\n");
+                String nombre =letra.nextLine();
+                tabla[indice].setNombre(nombre);
+            break;
+            case 2:
+                System.out.println("Ingrese la nueva descripcion para la tarea\n");
+                String descripcion =letra.nextLine();
+                tabla[indice].setDescripcion(descripcion);
+            break;
+            case 3:
+                System.out.println("Ingrese la nueva fecha de creacion de la tarea(AAAA-MM-DD)");
+                fechaI = letra.nextLine();
+            
+                try {
+                tabla[indice].setFechaCreacion(fechaI);
+                } 
+                catch (Exception e) {
+                System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");
+                fechaI = letra.nextLine();
+                tabla[indice].setFechaCreacion(fechaI);
+                }
+            break;
+            case 4:
+                System.out.println("Ingrese la nueva fecha de finalizacion de la tarea(AAAA-MM-DD)");
+                fechaF = letra.nextLine();
+            
+                try {
+                tabla[indice].setFechaFinal(fechaF);
+                } 
+                catch (Exception e) {
+                System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");
+                fechaF = letra.nextLine();
+                tabla[indice].setFechaFinal(fechaF);
+                }
+            break;
+            case 5:
+                if(tabla[indice].getEstado().equals("Pendiente")){
+                    tabla[indice].setEstado(2);
+                }else if(tabla[indice].getEstado().equals("En curso")){
+                    tabla[indice].setEstado(3);
+                }
+            break;
+        }
+        return "La tarea fue editada con exito";
     }
 }

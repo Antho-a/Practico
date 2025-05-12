@@ -21,7 +21,7 @@ public class Main {
 
          
 
-            System.out.println("Ingrese la fecha de creacion de la tarea(AAAA-MM-DD)");
+            System.out.println("Ingrese la fecha de finalizacion de la tarea(AAAA-MM-DD)");
             fechaf = letra.nextLine();
         
             try {
@@ -33,9 +33,6 @@ public class Main {
             aux.setFechaFinal(fechaf);
             }
             
-
-       
-
         System.out.println("Ingrese el estado:\n[1].Pendiente\n[2].En curso");   
         estado=num.nextInt();
         aux.setEstado(estado);//Asigna estado de la tarea
@@ -68,11 +65,11 @@ public class Main {
 
         Scanner letra = new Scanner(System.in);//Variable de entrada para letras
         Scanner num = new Scanner(System.in);//Variable de entrada para numeros
-        int hash,colision,opcion; //variables opciones, guardan la opcion del usuario en un determinado tiempo
+        int hash,colision,opcion,op; //variables opciones, guardan la opcion del usuario en un determinado tiempo
         String clave;
         int indice;
         Hash tabla = new Hash();
-
+        Tareas tarea = new Tareas();
         System.out.println("Ingrese el metodo de asignacion de indice deseado");
         System.out.println("1.Arismetica modular");
         System.out.println("2.Metodo de la multiplicacion");
@@ -99,7 +96,7 @@ public class Main {
             switch(opcion){
                 case 1:
 
-                    Tareas tarea = new Tareas();
+
                     tarea=ingresar();
 
                     tarea.darId();
@@ -128,6 +125,22 @@ public class Main {
                     
                 break;
                 case 3:
+                    tabla.MostrarId();
+
+                    System.out.println("Porfavor ingrese los primeros 10 caracteres del ID de la tarea que desea editar");
+                    clave=letra.nextLine();
+                    indice=tabla.Buscar(clave, hash, colision);
+                    if(indice!=101){
+                        System.out.println("Ingrese que desea cambiar");
+                        System.out.println("[1].Nombre");
+                        System.out.println("[2].Descripcion");
+                        System.out.println("[3].Fecha de Iniciacion");
+                        System.out.println("[4].Fecha de Finalizacion");
+                        System.out.println("[5].Estado");
+                        op=num.nextInt();
+                        tabla.editarTarea(indice, op);
+                        
+                    }
 
                 
                 break;
