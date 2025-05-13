@@ -126,7 +126,6 @@ public class Hash {
      public String editarTarea(int indice,int op){
         Scanner letra = new Scanner(System.in);
         String fechaF,fechaI;
-        int a=0;
         switch(op){
             case 1:
                 System.out.println("Ingrese el nombre nuevo para la tarea\n");
@@ -140,7 +139,7 @@ public class Hash {
             break;
             case 3:
                 System.out.println("Ingrese la nueva fecha de creacion de la tarea(AAAA-MM-DD)");
-                while(a==0){
+                while(true){
                     try {
                         fechaI = letra.nextLine();
                         tabla[indice].setFechaFinal(fechaI);
@@ -153,7 +152,7 @@ public class Hash {
             break;
             case 4:
                 System.out.println("Ingrese la nueva fecha de finalizacion de la tarea(AAAA-MM-DD)");
-                while(a==0){
+                while(true){
                     try {
                         fechaF = letra.nextLine();
                         tabla[indice].setFechaFinal(fechaF);

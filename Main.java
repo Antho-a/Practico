@@ -9,7 +9,7 @@ public class Main {
         Scanner letra = new Scanner(System.in);
         Scanner num = new Scanner(System.in);
         String fechaf,nombre,descripcion;
-        int estado,a=0;
+        int estado;
 
         System.out.println("Ingrese el nombre de la tarea");
         nombre = letra.nextLine();
@@ -19,11 +19,11 @@ public class Main {
         descripcion = letra.nextLine();
         aux.setDescripcion(descripcion);//Coloca la descripcion ingresada
         System.out.println("Ingrese la fecha de finalizacion de la tarea(AAAA-MM-DD)");       
-        while(a==0){
+        while(true){//para que itere continuamente hasta que la fecha la ingrese bien
             try {
                 fechaf = letra.nextLine();
                 aux.setFechaFinal(fechaf);
-                break;
+                break;//cuando no lance una excepcion termina
             } 
             catch (Exception e) {
             System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");    
