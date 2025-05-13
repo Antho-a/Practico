@@ -74,7 +74,7 @@ public class Hash {
 
         for (int i = 0 ; i<m ; i++){
             if (this.tabla[i].getId()!=null){
-                System.out.println(i+")"+tabla[i].MostrarId());
+                System.out.println(tabla[i].MostrarId());
             }
         } 
         System.out.println("---------------------------------------------------------------");
@@ -126,6 +126,7 @@ public class Hash {
      public String editarTarea(int indice,int op){
         Scanner letra = new Scanner(System.in);
         String fechaF,fechaI;
+        int a=0;
         switch(op){
             case 1:
                 System.out.println("Ingrese el nombre nuevo para la tarea\n");
@@ -139,28 +140,28 @@ public class Hash {
             break;
             case 3:
                 System.out.println("Ingrese la nueva fecha de creacion de la tarea(AAAA-MM-DD)");
-                fechaI = letra.nextLine();
-            
-                try {
-                tabla[indice].setFechaCreacion(fechaI);
-                } 
-                catch (Exception e) {
-                System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");
-                fechaI = letra.nextLine();
-                tabla[indice].setFechaCreacion(fechaI);
+                while(a==0){
+                    try {
+                        fechaI = letra.nextLine();
+                        tabla[indice].setFechaFinal(fechaI);
+                        break;
+                    } 
+                    catch (Exception e) {
+                    System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");    
+                    }
                 }
             break;
             case 4:
                 System.out.println("Ingrese la nueva fecha de finalizacion de la tarea(AAAA-MM-DD)");
-                fechaF = letra.nextLine();
-            
-                try {
-                tabla[indice].setFechaFinal(fechaF);
-                } 
-                catch (Exception e) {
-                System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");
-                fechaF = letra.nextLine();
-                tabla[indice].setFechaFinal(fechaF);
+                while(a==0){
+                    try {
+                        fechaF = letra.nextLine();
+                        tabla[indice].setFechaFinal(fechaF);
+                        break;
+                    } 
+                    catch (Exception e) {
+                    System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");    
+                    }
                 }
             break;
             case 5:

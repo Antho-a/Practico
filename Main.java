@@ -9,7 +9,7 @@ public class Main {
         Scanner letra = new Scanner(System.in);
         Scanner num = new Scanner(System.in);
         String fechaf,nombre,descripcion;
-        int estado;
+        int estado,a=0;
 
         System.out.println("Ingrese el nombre de la tarea");
         nombre = letra.nextLine();
@@ -18,21 +18,17 @@ public class Main {
         System.out.println("Ingrese la descripcion de la tarea");
         descripcion = letra.nextLine();
         aux.setDescripcion(descripcion);//Coloca la descripcion ingresada
-
-         
-
-            System.out.println("Ingrese la fecha de finalizacion de la tarea(AAAA-MM-DD)");
-            fechaf = letra.nextLine();
-        
+        System.out.println("Ingrese la fecha de finalizacion de la tarea(AAAA-MM-DD)");       
+        while(a==0){
             try {
-            aux.setFechaFinal(fechaf);
+                fechaf = letra.nextLine();
+                aux.setFechaFinal(fechaf);
+                break;
             } 
             catch (Exception e) {
-            System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");
-            fechaf = letra.nextLine();
-            aux.setFechaFinal(fechaf);
+            System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");    
             }
-            
+        }
         System.out.println("Ingrese el estado:\n[1].Pendiente\n[2].En curso");   
         estado=num.nextInt();
         aux.setEstado(estado);//Asigna estado de la tarea
@@ -143,7 +139,7 @@ public class Main {
                         System.out.println("[4].Fecha de Finalizacion");
                         System.out.println("[5].Estado");
                         op=num.nextInt();
-                        tabla.editarTarea(indice, op);//Pasa el indice (tarea que se quiere editar) y que parte de la misma editar
+                        System.out.println(tabla.editarTarea(indice, op));//Pasa el indice (tarea que se quiere editar) y que parte de la misma editar
                         
                     }
 
