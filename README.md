@@ -8,7 +8,7 @@ Este proyecto implementa un sistema de gestión de tareas utilizando una tabla h
 - **`Main.java`**: Programa principal con un menú interactivo para ingresar, mostrar, editar o eliminar tareas.
 - **`Hash.java`**: Clase que implementa la tabla hash con métodos de inserción, búsqueda, eliminación y edición de tareas.
 - **`Tareas.java`**: Define el objeto `Tareas` con atributos como ID, nombre, descripción, fechas y estado.
-- **`Colision.java`**: Implementa dos métodos para la resolución de colisiones: lineal y cuadrática.
+- **`Colision.java`**: Implementa dos métodos para la resolución de colisiones: lineal y cuadrática
 
 ## Funcionalidades
 
