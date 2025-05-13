@@ -68,6 +68,7 @@ public class Main {
         int hash,colision,opcion,op; //variables opciones, guardan la opcion del usuario en un determinado tiempo
         String clave;
         int indice;
+        double condicion;
         Hash tabla = new Hash();
         Tareas tarea = new Tareas();
         System.out.println("Ingrese el metodo de asignacion de indice deseado");
@@ -75,6 +76,8 @@ public class Main {
         System.out.println("2.Metodo de la multiplicacion");
 
         hash = num.nextInt();
+
+        
 
         while(hash <1 || hash > 2){
             System.out.println("Ingrese un metodo valido");
@@ -90,19 +93,20 @@ public class Main {
             System.out.println("Ingrese un metodo valido");
             colision = num.nextInt();
         }
-
         do{
             opcion=menu();
             switch(opcion){
                 case 1:
-
+                    condicion=tabla.calcularFactor();
+                    if(condicion==0.0297029702970297){//ese numero debido a que controlamos que avise cuando ya haya 3 tareas ingresadas
+                        System.out.println("La tabla esta un 2,97% llena");
+                    }
 
                     tarea=ingresar();
 
                     tarea.darId();
                      
                     if (tabla.Insertar(hash,colision,tarea) == true){
-
                         System.out.println("La tarea con id " + tarea.getId() + "se ha ingresado correctamente");
                     }
                      else{
@@ -117,9 +121,10 @@ public class Main {
                     System.out.println("Porfavor ingrese los primeros 10 caracteres del ID de la tarea que desea buscar");
                     clave=letra.nextLine();
 
-                    indice=tabla.Buscar(clave, hash, colision);
-                    if(indice!=101){
+                    indice=tabla.Buscar(clave, hash, colision);//busca la tarea ingresada en base al id
+                    if(indice!=101){//Cuando el indice es igual a 101 es porque no encontro la tarea
                         tabla.getTarea(indice);
+                        System.out.println("Y esta en la posicion: "+indice);
                     }
                     
                     
@@ -129,7 +134,7 @@ public class Main {
 
                     System.out.println("Porfavor ingrese los primeros 10 caracteres del ID de la tarea que desea editar");
                     clave=letra.nextLine();
-                    indice=tabla.Buscar(clave, hash, colision);
+                    indice=tabla.Buscar(clave, hash, colision);//Busca el indice a editar
                     if(indice!=101){
                         System.out.println("Ingrese que desea cambiar");
                         System.out.println("[1].Nombre");
@@ -138,7 +143,7 @@ public class Main {
                         System.out.println("[4].Fecha de Finalizacion");
                         System.out.println("[5].Estado");
                         op=num.nextInt();
-                        tabla.editarTarea(indice, op);
+                        tabla.editarTarea(indice, op);//Pasa el indice (tarea que se quiere editar) y que parte de la misma editar
                         
                     }
 
@@ -149,9 +154,9 @@ public class Main {
                     System.out.println("Porfavor ingrese los 10 primeros id de la tarea que desea borrar");
                     clave=letra.nextLine();
 
-                    indice=tabla.Buscar(clave, hash, colision);
+                    indice=tabla.Buscar(clave, hash, colision);//Busca la tarea a eliminar con el id especificado
                     if(indice!=101){
-                        System.out.println(tabla.eliminarTarea(indice));
+                        System.out.println(tabla.eliminarTarea(indice));//Da a la tarea de baja y pone en null su id
                     }
                 break;
                 case 5:

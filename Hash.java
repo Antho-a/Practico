@@ -9,11 +9,13 @@ public class Hash {
 
     private double factorCarga = 0;
 
-    Tareas tabla [] = new Tareas[m];
+    private Tareas tabla [] = new Tareas[m];
 
     public Hash(){
-        for ( int i = 0 ; i<m ; i++)
-        tabla[i] = new Tareas();
+        for ( int i = 0 ; i<m ; i++){//se inicializan las tareas
+            tabla[i] = new Tareas();
+        }
+        
     }
 
 
@@ -23,15 +25,15 @@ public class Hash {
         int indice;
         
         clave=TransformarId(tarea.getId().substring(0, 10));
-        if(i==1){
+        if(i==1){//Ve el metodo elegido por el usuario de hasheo
             indice=AritmeticaMod(clave);
         }else{
             indice=MetodoMul(clave);
         }
 
-        if(this.tabla[indice].getId() != null){
+        if(this.tabla[indice].getId() != null){//si la tabla esta ocupada por alguna tarea en el indice=clave tranformada se empiezan a hacer colisiones
 
-            if(colision == 1){
+            if(colision == 1){//Ve el metodo elegido por el usuario de resolucion de colisiones
                 indice = Colision.ColisionLineal(indice, this.tabla,"",1);
 
             }
@@ -40,8 +42,8 @@ public class Hash {
             }
         }
 
-        this.tabla[indice]=tarea;
-        factorCarga++;
+        this.tabla[indice]=tarea;//guarda la tarea ingresada en un indice de la tabla
+        numElementos=numElementos+1;//Cuenta las tareas ingresadas
         return tabla[indice].getesAlta();
     }
 
@@ -84,10 +86,9 @@ public class Hash {
     }
     public int Buscar(String clave , int hash, int colision ){ //metodo buscar
 
-        int indice; // su nombre da su funcionalidad xd
+        int indice;
 
-        long claveTransformada = TransformarId(clave); // Ya que la funcion hash tanforma el indice en un numero cualquiera, necesito hacer lo mismo con lo que ingrese el usuario
-                                                       // y guardar ese cambio para poder usarlo en los metodos 
+        long claveTransformada = TransformarId(clave); //Transforma la clave para buscarla en la tabla
 
         if (hash==1){
             indice=AritmeticaMod(claveTransformada);
@@ -102,9 +103,9 @@ public class Hash {
             return 101;
         }
         else{
-            if(tabla[indice].getId().substring(0, 10).equals(clave)){
+            if(tabla[indice].getId().substring(0, 10).equals(clave)){//Si la tarea a buscar no ha tenido colisiones retorna la clave transformada
                 return indice;
-            }else{
+            }else{//Si no llega a hacer la clave transformada se realiza metodos de colision hasta encontrarla
                 if(colision==1){
                     indice=Colision.ColisionLineal(indice, tabla, clave, 1);
                     return indice; 
@@ -171,5 +172,9 @@ public class Hash {
             break;
         }
         return "La tarea fue editada con exito";
+    }
+    public double  calcularFactor(){
+        factorCarga=numElementos/m;
+        return (factorCarga);
     }
 }
