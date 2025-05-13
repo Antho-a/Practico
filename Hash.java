@@ -2,7 +2,7 @@
 import java.util.Scanner;
 
 public class Hash {
-
+//Atributos
     private final int m = 101;
 
     private int numElementos = 0;
@@ -10,7 +10,7 @@ public class Hash {
     private double factorCarga = 0;
 
     private Tareas tabla [] = new Tareas[m];
-
+//Constructor
     public Hash(){
         for ( int i = 0 ; i<m ; i++){//se inicializan las tareas
             tabla[i] = new Tareas();
@@ -18,7 +18,7 @@ public class Hash {
         
     }
 
-
+//Metodos
     public boolean Insertar(int i, int colision,Tareas tarea){
 
         long clave;
@@ -47,7 +47,7 @@ public class Hash {
         return tabla[indice].getesAlta();
     }
 
-    private int AritmeticaMod(long clave){
+    private int AritmeticaMod(long clave){//privados porque solo los debe manejar la clase
         return (int)(clave % m);
     }
 
