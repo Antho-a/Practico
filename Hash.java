@@ -34,7 +34,7 @@ public class Hash {
         if(this.tabla[indice].getId() != null){//si la tabla esta ocupada por alguna tarea en el indice=clave tranformada se empiezan a hacer colisiones
 
             if(colision == 1){//Ve el metodo elegido por el usuario de resolucion de colisiones
-                indice = Colision.ColisionLineal(indice, this.tabla,"",1);
+                indice = Colision.ColisionLineal(indice, this.tabla,"",1);//se envia "" para que busque un lugar vacio
 
             }
             else{
