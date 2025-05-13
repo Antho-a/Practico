@@ -32,3 +32,11 @@ Este proyecto implementa un sistema de gestión de tareas utilizando una tabla h
   - Pendiente
   - En curso
   - Terminada
+
+## Prueba al insertar
+- Se ingresa los datos que debe tener la tarea y cuando se pide la fecha se ingresa un try-catch para que salve el codigo por si llega a haber una excepcion.
+  ![Captura de pantalla 2025-05-12 222537](https://github.com/user-attachments/assets/87d87aed-d851-4278-b131-bfdbff9a539b)
+
+- Luego se pasa por una funcion hash la cual es la que se pide al inicio del codigo, y calcula el indice. En caso de estar ocupado se resuelve con la colision elegida al comienzo del codigo.
+  
+![Captura de pantalla 2025-05-12 223157](https://github.com/user-attachments/assets/2d9d8fb7-8397-4fca-9b20-5f8d736f72d5)
